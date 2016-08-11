@@ -17,11 +17,11 @@
     - [Đường viền](#đường-viền)
   1. [Sass](#sass)
     - [Cú pháp](#cú-pháp)
-    - [Thứ tự](##sắp-xếp-các-khai-báo-thuộc-tính)
+    - [Thứ tự](#sắp-xếp-các-khai-báo-thuộc-tính)
     - [Biến](#biến)
     - [Mixins](#mixins)
     - [Mở rộng directive](#extend-directive)
-    - [Selectors lồng nhau](##selectors-lồng-nhau)
+    - [Selectors lồng nhau](#selectors-lồng-nhau)
   1. [Translation](#translation)
 
 ## Thuật ngữ
