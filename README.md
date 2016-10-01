@@ -1,19 +1,19 @@
 # Airbnb CSS / Sass Styleguide
 
-*Một cách tiếp cận hợp lý nhất với CSS và SASS*
+*Cách tiếp cận CSS và Sass hợp lý nhất*
 
 ## Mục lục
 
   1. [Thuật ngữ](#terminology)
     - [Khai báo](#khai-báo)
-    - [Selectors](#selectors)
+    - [Selector](#selectors)
     - [Thuộc tính](#thuộc-tính)
   1. [CSS](#css)
     - [Quy cách](#quy-cách)
     - [Chú thích](#chú-thích)
     - [OOCSS và BEM](#oocss-và-bem)
-    - [ID Selectors](#id-selectors)
-    - [JavaScript hooks](#javascript-hooks)
+    - [ID Selector](#id-selectors)
+    - [JavaScript hook](#javascript-hooks)
     - [Đường viền](#đường-viền)
   1. [Sass](#sass)
     - [Cú pháp](#cú-pháp)
@@ -21,14 +21,14 @@
     - [Biến](#biến)
     - [Mixins](#mixins)
     - [Mở rộng directive](#extend-directive)
-    - [Selectors lồng nhau](#selectors-lồng-nhau)
+    - [Selector lồng nhau](#selectors-lồng-nhau)
   1. [Translation](#translation)
 
 ## Thuật ngữ
 
 ### Khai báo
 
-Một "khai báo" là tên gọi của một selector (hoặc một nhóm các selectors) với một nhóm các thuộc tính. Dưới đây là ví dụ:
+Một “khai báo” là tên gọi của một selector (hoặc một nhóm các selector) với một nhóm các thuộc tính. Dưới đây là ví dụ:
 
 ```css
 .listing {
@@ -37,9 +37,9 @@ Một "khai báo" là tên gọi của một selector (hoặc một nhóm các s
 }
 ```
 
-### Selectors
+### Selector
 
-Trong một khai báo, "selectors" là phần sẽ xác định xem phần tử nào trong DOM sẽ được style bởi các thuộc tính xác định. Selectors có thể tương ứng với các phần tử HTML, cũng như class hay ID của phần tử, hoặc bất kì thuộc tính nào của nó. Dưới đây là ví dụ về selectors:
+Trong một khai báo, “selector” là phần sẽ xác định xem phần tử nào trong DOM sẽ được style bởi các thuộc tính xác định. Selector có thể tương ứng với các phần tử HTML, cũng như class hay ID của phần tử, hoặc bất kì thuộc tính nào của nó. Dưới đây là ví dụ về selector:
 
 ```css
 .my-element-class {
@@ -66,17 +66,17 @@ Thuộc tính là một cặp khóa-giá trị, và một khai báo có thể ch
 
 ### Quy cách
 
-* Sử dụng soft tabs (2 dấu cách) cho khoảng cách thụt vào (indentation)
+* Sử dụng soft tab (2 dấu cách) cho khoảng cách thụt vào (indentation)
 * Nên sử dụng dấu gạch ngang trong camelCasing của tên class.
-  - Dấu gạch dưới và PascalCasing sẽ không sao nếu bạn sử dụng BEM (xem [OOCSS and BEM](#oocss-and-bem) dưới đây).
-* Không sử dụng ID Selectors.
-* Khi sử dụng nhiều selector trong một khai báo, đặt mỗi selector trên một dòng kẻ.
+  - Dấu gạch dưới và PascalCasing áp dụng được nếu bạn sử dụng BEM (xem [OOCSS and BEM](#oocss-and-bem) bên dưới).
+* Không sử dụng ID Selector.
+* Khi sử dụng nhiều selector trong một khai báo, viết mỗi selector trên một dòng riêng.
 * Trước dấu ngoặc nhọn `{` phải có một dấu cách trong khai báo.
 * Trong thuộc tính, đặt một dấu cách đứng sau dấu hai chấm `:` .
-* Đặt dấu đóng ngoặc nhọn `}` của một khai báo trên một dòng kẻ mới.
-* Đặt một dòng kẻ trống giữa các khai báo.
+* Đặt dấu đóng ngoặc nhọn `}` của một khai báo trên một dòng mới.
+* Đặt một dòng trống giữa các khai báo.
 
-**Không tốt**
+**Không nên**
 
 ```css
 .avatar{
@@ -90,7 +90,7 @@ Thuộc tính là một cặp khóa-giá trị, và một khai báo có thể ch
 }
 ```
 
-**Tốt**
+**Nên**
 
 ```css
 .avatar {
@@ -108,31 +108,31 @@ Thuộc tính là một cặp khóa-giá trị, và một khai báo có thể ch
 ### Chú thích
 
 * Nên dùng hai gạch (`//`) để đặt chú thích.
-* Nên đặt chú thích trên một dòng kẻ riêng, không đặt ở cuối dòng kẻ.
+* Nên đặt chú thích trên một dòng riêng, không đặt ở cuối dòng.
 * Viết chú thích chi tiết cho những dòng code mà không thể hiện được ý nghĩa rõ ràng khi đọc, ví dụ:
   - Sử dụng z-index
-  - Khả năng tương thích và trình duyệt.
+  - Khả năng tương thích và trình duyệt
 
 ### OOCSS và BEM
 
-Chúng tôi khuyến khích một số sự kết hợp giữa OOCSS và BEM cho những lý do sau:
+Chúng tôi khuyến khích một số cách kết hợp giữa OOCSS và BEM cho những lý do sau:
 
-  * Nó giúp tạo ra mối quan hệ chặt chẽ rõ ràng giữa CSS và HTML
-  * Nó giúp tạo ra những thành phần có thể tái sử dụng.
-  * Nó cho phép ít lồng nhau (nested) và giảm sự riêng biệt 
-  * Nó giúp xây dựng stylesheets có khả năng mở rộng
+  * Giúp tạo ra mối quan hệ chặt chẽ rõ ràng giữa CSS và HTML
+  * Giúp tạo ra những thành phần có thể tái sử dụng.
+  * Cho phép ít lồng nhau (nested) và giảm sự riêng biệt 
+  * Giúp xây dựng stylesheet có khả năng mở rộng
 
-**OOCSS**, hay "CSS hướng đối tượng", là một phương pháp để viết code CSS mà khuyến khích bạn định hình stylesheets như một sự tập hợp của nhiều "đối tượng" (object): có thể tái sử dụng, có thể lặp lại độc lập xuyên suốt toàn bộ một trang web.
+**OOCSS**, hay “CSS hướng đối tượng”, là một phương pháp để viết CSS mà khuyến khích bạn định hình stylesheet như một sự tập hợp của nhiều “đối tượng” (object): có thể tái sử dụng, có thể lặp lại độc lập xuyên suốt toàn bộ một trang web.
 
-  * Nicole Sullivan's [OOCSS wiki](https://github.com/stubbornella/oocss/wiki)
-  * Smashing Magazine's [Giới thiệu về OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/)
+  * [OOCSS wiki](https://github.com/stubbornella/oocss/wiki) của Nicole Sullivan
+  * [Giới thiệu về OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/) trên Smashing Magazine
 
-**BEM**, hay "Block-Element-Modifier", là một quy ước đặt tên cho classes trong HTML và CSS. Ban đầu nó được phát triển bởi Yandex với codebases lớn, có khả năng mở rộng, và có thể coi như một tập hợp của các hướng dẫn cho việc thực hiện OOCSS.
+**BEM**, hay “Block-Element-Modifier”, là một quy ước đặt tên cho class trong HTML và CSS. Ban đầu nó được phát triển bởi Yandex với codebase lớn, có khả năng mở rộng, và có thể coi như một tập hợp của các hướng dẫn cho việc thực hiện OOCSS.
 
-  * CSS Trick's [BEM 101](https://css-tricks.com/bem-101/)
-  * Harry Roberts' [Giới thiệt về BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
+  * [BEM 101](https://css-tricks.com/bem-101/) trên CSS Tricks
+  * [Giới thiệu về BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) của Harry Roberts
 
-Chúng tôi khuyến nghị sử dụng một biến thể của BEM với PascalCased "blocks", mà làm việc riêng biệt khá hiệu quả với các thành phần (components) (e.g. React). Dấu gạch dưới và gạch ngang vẫn được sử dụng cho thành phần modifiers và thành phần con.
+Chúng tôi khuyến khích sử dụng một biến thể của BEM với “block” PascalCase, mà nó hoạt động riêng biệt khá hiệu quả với các thành phần (component) (vd: React). Dấu gạch dưới và gạch ngang vẫn được sử dụng cho thành phần Modifier và thành phần con.
 
 **Ví dụ**
 
@@ -161,21 +161,21 @@ function ListingCard() {
 .ListingCard__content { }
 ```
 
-  * `.ListingCard` là một "block" và đại diện cho thành phần cao hơn
-  * `.ListingCard__title` là một "phần tử" and biểu diễn như là một phần tử con của `.ListingCard` để tạo thành "block".
-  * `.ListingCard--featured` là một "modifier" và đại diện cho các trạng thái khác nhau hay các biến thể của `.ListingCard` block.
+  * `.ListingCard` là một “block” và đại diện cho thành phần cao hơn
+  * `.ListingCard__title` là một “phần tử” và biểu diễn như là một phần tử con của `.ListingCard` để tạo thành “block”.
+  * `.ListingCard--featured` là một “modifier” và đại diện cho các trạng thái khác nhau hay các biến thể của block `.ListingCard`.
 
-### ID Selectors 
+### ID Selector
 
-Trong khi có thể chọn các phần tử theo ID trong CSS, nó vẫn không nên được sử dụng. ID selectors giới thiệu một sự riêng biệt [sự riêng biệt](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) không cần thiết cho các khai báo của bạn và không thể tái sử dụng lại được.
+Việc chọn những phần tử bằng ID trong CSS vẫn khả thi, nhưng nhìn chung vẫn không nên được áp dụng. ID selector tạo ra nên [tính đặc trưng](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) không cần thiết cho các khai báo của bạn và không thể tái sử dụng lại được.
 
-Để biết thêm về chủ đề này, đọc [CSS Wizardry's article](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) on dealing with specificity.
+Để biết thêm về chủ đề này, đọc [bài viết của CSS Wizardry](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) về cách để giải quyết vấn tính đặc trưng trong CSS.
 
-### JavaScript hooks
+### JavaScript hook
 
-Tránh việc binding cùng một class trong CSS và JavaScript. Việc làm đó có thể gây lãng phí thời gian ở mức nhẹ nhất khi lập trình viên phải kiểm tra chéo mỗi class khi thay đổi. Và trong trường hợp xấu nhất, lập trình viên có thể sẽ phải đối mặt với việc phá vỡ sự hoạt động của function.
+Tránh việc gắn kết cùng một class trong CSS và JavaScript. Kết hợp cả hai ít nhất có thể gây lãng phí thời gian trong suốt quá trình tái cấu trúc mã nguồn khi lập trình viên phải kiểm tra chéo mỗi class khi thay đổi, và trong trường hợp xấu nhất, lập trình viên có thể sẽ phải đối mặt với việc phá vỡ một chức năng nào đó.
 
-Chúng tôi khuyến nghị tạo ra các class riêng cho JavaScript để bind, tiền tố bắt đầu với `.js-`:
+Chúng tôi khuyến khích tạo ra các class riêng cho JavaScript để gắn kết, tiền tố bắt đầu với `.js-`:
 
 ```html
 <button class="btn btn-primary js-request-to-book">Request to Book</button>
@@ -185,7 +185,7 @@ Chúng tôi khuyến nghị tạo ra các class riêng cho JavaScript để bind
 
 Sử dụng `0` thay vì `none` để xác định rằng đối tượng này không có đường viền.
 
-**Bad**
+**Không nên**
 
 ```css
 .foo {
@@ -193,7 +193,7 @@ Sử dụng `0` thay vì `none` để xác định rằng đối tượng này k
 }
 ```
 
-**Good**
+**Nên**
 
 ```css
 .foo {
@@ -205,14 +205,14 @@ Sử dụng `0` thay vì `none` để xác định rằng đối tượng này k
 
 ### Cú pháp
 
-* Sử dụng `.scss` cú pháp, không bao giờ nên sử dụng cú pháp gốc của `.sass`
-* Sắp xếp CSS và `@include` theo một logic (xem ở dưới)
+* Sử dụng cú pháp `.scss`, không bao giờ sử dụng cú pháp gốc `.sass`
+* Sắp xếp CSS và `@include` theo một logic (xem bên dưới)
 
 ### Sắp xếp các khai báo thuộc tính
 
 1. Khai báo thuộc tính
 
-    Khai báo toàn bộ thuộc tính cơ bản trước, những gì không phải là `@include` hay khai báo lồng (nested) selector.
+    Khai báo toàn bộ thuộc tính cơ bản trước, những gì không phải là `@include` hay selector lồng nhau (nested).
 
     ```scss
     .btn-green {
@@ -224,7 +224,7 @@ Sử dụng `0` thay vì `none` để xác định rằng đối tượng này k
 
 2. Khai báo `@include`
 
-    Nhóm `@include` ở cuối cùng để dễ dàng đọc toàn bộ selector.
+    Nhóm những `@include` ở cuối cùng để làm cho việc đọc toàn bộ selector dễ dàng hơn.
 
     ```scss
     .btn-green {
@@ -235,9 +235,9 @@ Sử dụng `0` thay vì `none` để xác định rằng đối tượng này k
     }
     ```
 
-3. Selectors lồng nhau
+3. Selector lồng nhau
 
-    Selectors lồng nhau, _nếu cần thiết_ , đặt ở cuối cùng, và không có gì viết sau nó nữa. Thêm khoảng trắng giữa khai báo và selector lồng nhau, cũng như giữa các phần tử con. Áp dụng toàn bộ hướng dẫn ở trên cho selector lồng nhau.
+    Selector lồng nhau, _nếu cần thiết_, đặt ở cuối cùng, và không có gì viết sau nó nữa. Thêm khoảng trắng giữa khai báo và selector lồng nhau, cũng như giữa các phần tử lồng nhau liền kề. Áp dụng tương tự hướng dẫn như trên cho selector lồng nhau.
 
     ```scss
     .btn {
@@ -253,19 +253,19 @@ Sử dụng `0` thay vì `none` để xác định rằng đối tượng này k
 
 ### Biến
 
-Nên dùng gạch ngang giữa tên biến (e.g. `$my-variable`) thay vì camelCased or snake_cased. Nó cũng được phép dùng để đặt tiền tố cho tên biến nếu có ý định sử dụng trong cùng một file với dấu gạch dưới (e.g. `$_my-variable`).
+Nên dùng gạch ngang giữa tên biến (e.g. `$my-variable`) thay vì camelCase or snake_case. Nó cũng được chấp nhận để đặt tiền tố cho tên biến nếu có ý định sử dụng trong cùng một tập tin với dấu gạch dưới (vd: `$_my-variable`).
 
-### Mixins
+### Mixin
 
-Mixins nên được sử dụng để không lặp lại các đoạn code giống nhau với phương châm (DRY - Don't-Repeat-Yourself) trong code của bạn, thêm sự rõ ràng, hoặc tách sự phức tạp - theo cách tương tự mà function được đặt tên. Mixins cho phép không có đối số có thể hữu ích cho việc này, nhưng chú ý rằng nếu bạn không nén lại (e.g. gzip), nó có thể đóng góp vào việc trùng lặp code không cần thiết.
+Mixin nên được sử dụng để không lặp lại các đoạn code giống nhau với phương châm (DRY - Don't-Repeat-Yourself) trong code của bạn, thêm sự rõ ràng, hoặc tách sự phức tạp--theo cách tương tự mà chức năng được đặt tên. Mixin không có đối số có thể hữu ích cho việc này, nhưng chú ý rằng nếu bạn không nén lại (vd: gzip), nó có thể tạo ra sự trùng lặp mã nguồn không cần thiết.
 
-### Extend directive
+### Mở rộng directive
 
-Nên tránh sử dụng `@extend` vì nó có một hành vi nguy hiểm tiềm tàng, đặc biệt khi sử dụng các selectors lồng nhau. Thậm chí mở rộng top-level placeholder selectors có thể gây ra vấn đề nếu thứ tự của selector kết thúc thay đổi sau đó (e.g. nếu họ đang ở một tệp tin khác, và thứ tự của các tệp tin được tải thay đổi.). Bạn có thể không lặp lại đoạn code của mình với mixins.
+Nên tránh sử dụng `@extend` vì nó có một hành vi nguy hiểm tiềm tàng, đặc biệt khi sử dụng các selector lồng nhau. Thậm chí mở rộng placeholder selector cấp cao nhất có thể gây ra vấn đề nếu thứ tự của selector thay đổi sau đó (vd: nếu chúng đang ở một tập tin khác, và thứ tự của các tập tin được tải sẽ thay đổi). Gzip nên được sử dụng để thực hiện việc nén mà bạn có thể làm được với `@extend`, và bạn có thể DRY đoạn code của mình một cách đẹp đẽ với mixin.
 
-### Selectors lồng nhau
+### Selector lồng nhau
 
-**ĐỪNG selectors lồng hơn 3 cấp độ!**
+**ĐỪNG lồng selector hơn 3 cấp!**
 
 ```scss
 .page-container {
@@ -277,20 +277,20 @@ Nên tránh sử dụng `@extend` vì nó có một hành vi nguy hiểm tiềm 
 }
 ```
 
-Khi selectors trở nên như vậy, bạn có thể đã viết CSS theo:
+Khi selector trở nên như vậy, bạn có thể đã viết CSS theo:
 
-* Liên kết chặt với HTML (dễ đổ vỡ) *hoặc*
-* Quá cụ thể (powerful) *—hoặc—*
+* Liên kết chặt với HTML (đặc trưng thấp) *—hoặc—*
+* Quá cụ thể (đặc trưng quá cao) *—hoặc—*
 * Không tái sử dụng
 
 
-Lặp lại: **không bao giờ được lồng ID selectors!**
+Lặp lại: **không bao giờ được lồng ID selector!**
 
-Nếu bạn phải sử dụng ID selector ngay từ đầu (và bạn thực sự không nên làm thế), nó không bảo giờ nên được lồng nhau. Nếu bạn thấy mình làm điều này, bạn cần phải xem xét lại code HTML, hoặc tìm hiểu tại sao lại cần cụ thể đến như vậy. Nếu bạn đang viết HTML và CSS tốt, bạn **không bao giờ nên** cần phải làm điều này.
+Nếu bạn phải sử dụng ID selector ngay từ đầu (và bạn thực sự không nên làm thế), thì chúng không bao giờ nên được lồng nhau. Nếu bạn nhận ra mình đang làm điều này, bạn cần phải xem xét lại mã HTML, hoặc tìm hiểu tại sao lại cần tính đặc trưng cao đến như vậy. Nếu bạn đang viết HTML và CSS tốt, bạn **không bao giờ nên** cần phải làm điều này.
 
-## Dịch
+## Bản dịch
 
-  Styleguide này cũng có sẵn trong các ngôn ngữ khác:
+  Styleguide này cũng có trong những ngôn ngữ khác:
 
   - ![tw](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Taiwan.png) **Chinese (Traditional)**: [ArvinH/css-style-guide](https://github.com/ArvinH/css-style-guide)
   - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [Zhangjd/css-style-guide](https://github.com/Zhangjd/css-style-guide)
